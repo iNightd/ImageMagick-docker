@@ -26,6 +26,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
  cd $BUILD_DIR && tar zxf ./freetype-2.10.2.tar.gz && cd freetype-2.10.2/ && export CFLAGS=-fPIC && ./configure && make && make install && unset CFLAGS && \
  cd $BUILD_DIR && tar xJf ./harfbuzz-2.6.4.tar.xz && cd harfbuzz-2.6.4/ && ./configure && make && make install && \
  cd $BUILD_DIR && tar zxf ./ImageMagick-7.0.10-13.tar.gz && cd ImageMagick-7.0.10-13 && export CFLAGS=-fPIC && ./configure && make && make install && unset CFLAGS && \
- apk del wget curl tar xz && rm -rf $BUILD_DIR
+ apk del wget curl tar xz && rm -rf $BUILD_DIR && rm -rf /var/cache/apk/*
 
 CMD ["convert", "-V"]
