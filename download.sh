@@ -1,10 +1,4 @@
-#!/usr/bin/env bash
-
-if [ $BUILD_DIR == '' ]; then
-export BUILD_DIR=$PWD/images
-fi
-
-mkdir -p $BUILD_DIR && cd $BUILD_DIR
+#!/usr/bin/env sh
 
 LIBPNG_URL=https://nchc.dl.sourceforge.net/project/libpng/libpng16/1.6.37/libpng-1.6.37.tar.gz
 JPEG_URL=https://www.imagemagick.org/download/delegates/jpegsrc.v9b.tar.gz
@@ -17,11 +11,13 @@ GIF_LIB_URL=https://nchc.dl.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz
 LIBXML_URL=https://www.imagemagick.org/download/delegates/libxml2-2.9.6.tar.gz
 ZLIB_URL=https://www.imagemagick.org/download/delegates/zlib-1.2.11.tar.gz
 LIBBZIP2_URL=https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
+LIBRAW_URL=https://www.libraw.org/data/LibRaw-0.19.5.tar.gz
 
-resources=($LIBPNG_URL $JPEG_URL $FREETYPE_URL $HARFBUZZ_URL $IMAGEMAGICK_URL $LIBWEBP_URL $LIBTIFF_URL $GIF_LIB_URL $LIBXML_URL &ZLIB_URL &LIBBZIP2_URL)
-
-for url in rouserces
+for url in $LIBPNG_URL $JPEG_URL $FREETYPE_URL $HARFBUZZ_URL $IMAGEMAGICK_URL $LIBWEBP_URL $LIBTIFF_URL $GIF_LIB_URL $LIBXML_URL $ZLIB_URL $LIBBZIP2_URL $LIBRAW_URL
 do
-  wget $url
+  if [ ! -f "$url" ]; then
+    wget $url
+  fi
+
   done
 
