@@ -1,7 +1,6 @@
 FROM alpine:3.11
 MAINTAINER chengliang <chengliang.duan@gmail.com>
 
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib"
 ENV BUILD_DIR=/root/build
 
 RUN mkdir -p $BUILD_DIR
