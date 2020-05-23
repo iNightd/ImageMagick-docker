@@ -2,12 +2,13 @@ FROM alpine:3.11
 MAINTAINER chengliang <chengliang.duan@gmail.com>
 
 ENV BUILD_DIR=/root/build
+ENV LD_LIBRARY_PATH=/usr/local/lib
+ENV  MAGICK_TMPDIR=/scratch
 
 RUN mkdir -p $BUILD_DIR
 
 ADD $PWD/download.sh $BUILD_DIR
 ADD $PWD/images $BUILD_DIR
-
 
 WORKDIR $BUILD_DIR
 
