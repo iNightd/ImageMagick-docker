@@ -3,7 +3,7 @@ MAINTAINER chengliang <chengliang.duan@gmail.com>
 
 ENV BUILD_DIR=/root/build
 ENV LD_LIBRARY_PATH=/usr/local/lib
-ENV  MAGICK_TMPDIR=/scratch
+ENV MAGICK_TMPDIR=/scratch
 
 RUN mkdir -p $BUILD_DIR
 
@@ -26,7 +26,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
  cd $BUILD_DIR && tar zxf ./libwebp-1.1.0.tar.gz && cd libwebp-1.1.0/ && ./configure && make && make install && \
  cd $BUILD_DIR && tar zxf ./freetype-2.10.2.tar.gz && cd freetype-2.10.2/ && export CFLAGS=-fPIC && ./configure && make && make install && unset CFLAGS && \
  cd $BUILD_DIR && tar xJf ./harfbuzz-2.6.4.tar.xz && cd harfbuzz-2.6.4/ && ./configure && make && make install && \
- cd $BUILD_DIR && tar zxf ./ImageMagick-7.0.10-13.tar.gz && cd ImageMagick-7.0.10-13 && export CFLAGS=-fPIC && ./configure && make && make install && unset CFLAGS && \
+ cd $BUILD_DIR && tar zxf ./ImageMagick.tar.gz &&  mv ./ImageMagick*/ ./ImageMagick && cd ImageMagick && export CFLAGS=-fPIC && ./configure && make && make install && unset CFLAGS && \
  apk del wget curl tar xz && rm -rf $BUILD_DIR && rm -rf /var/cache/apk/*
 
 CMD ["convert", "-V"]
